@@ -22,4 +22,17 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(minimal_publisher_test #最初書くのはnode名
+  src/minimal_publisher.cpp
+  src/main.cpp
+)
+ament_target_dependencies(minimal_publisher_test
+  rclcpp
+  example_interfaces
+)
+install(TARGETS
+  minimal_publisher_test
+  DESTINATION lib/${PROJECT_NAME}  
+)
+
 ament_package()
