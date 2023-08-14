@@ -21,15 +21,31 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(time
-  src/time_sub_node.cpp
+add_executable(time_pub
+  src/time_pub.cpp
 )
-ament_target_dependencies(time
+
+ament_target_dependencies(time_pub
   rclcpp
   std_msgs
 )
+
 install(TARGETS
-  time
+  time_pub
+  DESTINATION lib/${PROJECT_NAME}  
+)
+
+add_executable(time_sub
+  src/time_sub.cpp
+)
+
+ament_target_dependencies(time_sub
+  rclcpp
+  std_msgs
+)
+
+install(TARGETS
+  time_sub
   DESTINATION lib/${PROJECT_NAME}  
 )
 
